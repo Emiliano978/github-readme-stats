@@ -9,21 +9,16 @@
 
 import { request } from "../../src/common/http.js";
 import retryer from "../../src/common/retryer.js";
-import { logger } from "../../src/common/utils.js";
+import { logger } from "../../src/common/log.js";
 
 export const RATE_LIMIT_SECONDS = 60 * 5; // 1 request per 5 minutes
 
 /**
- * @typedef {import('axios').AxiosRequestHeaders} AxiosRequestHeaders Axios request headers.
- * @typedef {import('axios').AxiosResponse} AxiosResponse Axios response.
- */
-
-/**
  * Simple uptime check fetcher for the PATs.
  *
- * @param {AxiosRequestHeaders} variables Fetcher variables.
+ * @param {any} variables Fetcher variables.
  * @param {string} token GitHub token.
- * @returns {Promise<AxiosResponse>} The response.
+ * @returns {Promise<import('axios').AxiosResponse>} The response.
  */
 const uptimeFetcher = (variables, token) => {
   return request(
